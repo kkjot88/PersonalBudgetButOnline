@@ -1,0 +1,56 @@
+
+/*Style sheet used for all projects htmls*/
+
+body
+{
+	background-color: #1a1c23;
+	color: #c0c0c0;
+	font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
+}
+
+h1
+{	
+	color: #ffffff;
+	text-align: center;
+}
+
+input
+{	
+	box-sizing: border-box;
+	background-color: #1a1c23;
+	color: #ffffff;
+	border: 1px solid #c0c0c0;
+	border-radius: 4px;
+	outline: none;	
+}
+
+input:hover,
+input:focus
+{
+	border: 1px solid #ffffff;
+}
+
+input[type=submit]
+{
+	background-color: #c0c0c0;
+	box-sizing: border-box;
+	color: #1a1c23;
+	cursor: pointer;
+}
+
+input[type=submit]:hover
+{
+	background-color: #ffffff;
+	color: #000000;
+}
+
+a
+{
+	text-decoration: none;
+	color: #c0c0c0;
+}
+
+a:hover
+{
+	color: #ffffff;
+}
