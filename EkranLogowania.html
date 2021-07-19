@@ -7,11 +7,31 @@
 	<meta name="description" content="Strona służąca do zapanowania nad swoim budżetem osobistym" />
 	<meta name="keywords" content="finanse, budzet, budżet, rachunki, rachunkowość, pieniądze, bilans, wydatki, wydatek, dochodzy, przychody"/>
 	
-	<link rel="stylesheet" href="style.css" type="text/css"></link>	
+	<link rel="stylesheet" href="styles/styleGeneral.css" type="text/css"></link>	
+	<link rel="stylesheet" href="styles/styleLogInScreen.css" type="text/css"></link>	
 	
 </head>
 <body>
-
-
+	<main>
+		<div style="width: 750px; padding: 140px; margin: auto;">
+			<h1 style="font-size: 63px; font-weight: normal; margin: 30px;">
+				Budżet osobisty
+			</h1>
+			
+			<form action="DodajPrzychod.html" style="text-align: center;">
+				<input id="username" placeholder="Nazwa użytkownika" autocomplete="off"></input>
+				<input type="password" id="password" placeholder="Hasło"></input>
+				<input type="submit" id="logInButton" value="Zaloguj się!">
+			</form>
+			
+			<div id="horizontalLine"></div>
+			
+			<div id="other">
+				<a href="">Nie posiadasz jeszcze konta?</a>		
+				<a href="">Zapomniałeś hasło?</a>
+			</div>			
+		
+		<div>	
+	</main>
 </body>
 </html>

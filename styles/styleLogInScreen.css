@@ -1,0 +1,53 @@
+
+/*Style sheet for log in screen html*/
+
+#username,
+#password
+{
+	width:400px;
+	height: 40px;
+	margin-bottom: 24px;
+	border-radius: 8px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	text-align: center;
+	font-size: 24px;
+}
+
+#logInButton
+{	
+	border-radius: 8px;
+	width: 400px;
+	height: 40px;	
+	font-size: 24px;
+}
+
+#horizontalLine
+{	
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	width: 50%;
+	height: 1px;
+	background-color: #ffffff;	
+	display: block;
+}
+
+#other
+{
+	text-align: center;
+}
+
+#other > *
+{
+	display: block;
+	box-sizing: border-box;
+	font-size: 24px;
+	margin-top: 10px;
+}
+
+#other > *:hover
+{
+	text-decoration: underline;
+	font-weight: bold;
+}
