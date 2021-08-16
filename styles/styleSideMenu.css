@@ -1,0 +1,46 @@
+
+		/* Style sheet used for side menu on all projects .html's */
+
+#sideMenu
+{
+	/*stuff to make side menu always expand to the bottom of the page*/
+	position: absolute;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	
+	/*needs to be set again inspite of being set in grid-template-columns, by making columns we only "reserve" space for side menu div and then we position it on top of column not INSIDE of it*/
+	width: 218px;	
+
+	box-sizing: border-box;
+	background-color: #2b2d34;
+	padding: 4px 0px 4px 4px;
+}
+
+#activeMenuItem
+{	
+	box-sizing: border-box;
+	height: 54px;	
+	background-color: #1a1c23;
+	margin-bottom: 4px;
+	padding: 13px 0 0 24px;
+	font-size: 24px;
+	color: #ffffff;
+}
+
+.menuItem
+{
+	box-sizing: border-box;
+	height: 54px;	
+	background-color: #c0c0c0;
+	margin: 0 4px 4px 0;	
+	padding: 13px 0 0 24px;
+	font-size: 24px;
+	color: #1a1c23;
+}
+
+.menuItem:hover
+{
+	background-color: #ffffff;
+	color: #000000;
+}
