@@ -49,11 +49,12 @@
 
 	<nav>
 		<div id="sideMenu">
-			<div id="activeMenuItem">Dodaj przychód</div>
-			
-			<a href="DodajWydatek.html" class="menuItemLink">
-				<div class="menuItem">Dodaj wydatek</div>
+		
+			<a href="DodajPrzychod.html" class="menuItemLink">
+				<div class="menuItem">Dodaj przychód</div>
 			</a>
+			
+			<div id="activeMenuItem">Dodaj wydatek</div>
 
 			<a href="PrzegladajBilans.html" class="menuItemLink">
 				<div class="menuItem">Przeglądaj bilans</div>
@@ -81,7 +82,16 @@
 			<div class="inputDiv" >
 				<label for="datepicker">Data:</label>
 				<input type="text" class="finances" name="date" autocomplete="off" id="datepicker"></input>					
-			</div>				
+			</div>
+			
+			<div class="inputDiv">
+				<label for="paymentMethods">Sposób płatności:</label>				
+				<select id="paymentMethods" class="finances">						
+					<option>Karta kredytowa</option>
+					<option>Gotówka</option>
+					<option>Karta debetowa</option>
+				</select>
+			</div>	
 			
 			<div class="inputDiv">
 				<label for="categoriesMenu">Wybierz kategorię:</label>				
