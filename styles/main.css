@@ -1,0 +1,105 @@
+
+		/* Style sheet for DodajPrzychod.html, DodajWyadtek.html, PrzegladajBilans.html */
+
+form.data
+{	
+	display: grid;	
+	grid-template-columns: auto;
+	grid-row-gap: 20px;
+	padding: 10px;		
+}
+
+div.inputDiv
+{
+	display: grid;
+	grid-template-columns: 213px auto;
+	grid-column-gap: 10px;
+	//background-color: #474474;	
+	width: fit-content;
+}
+
+div.inputDiv[name=amount]
+{
+	grid-template-columns: 213px auto auto;
+}
+
+div.inputDiv > *
+{	
+	//background-color: #363363;
+}
+
+div.inputDiv > label
+{	
+	text-align: right;
+}
+
+div.inputDiv:focus-within
+{
+	color: #ffffff;
+}
+
+div.inputDiv:hover
+{
+	color: #ffffff;
+}
+
+div.inputDiv:hover > input {border: 1px solid #ffffff;}
+div.inputDiv:hover > select {border: 1px solid #ffffff;}
+div.inputDiv:hover > textarea {border: 1px solid #ffffff;}
+
+input.finances
+{
+	width: 400px;
+	border-radius: 8px;
+	padding: 4px;
+	padding-left: 12px;
+	padding-right: 8px;
+	font-size: 24px;
+}
+
+textarea.comment
+{	
+	height: 200px;
+	resize: none;
+	
+	width: 800px;
+	border-radius: 8px;
+	padding: 4px;
+	padding-left: 12px;
+	padding-right: 8px;	
+	font-size: 24px;
+}
+
+div.buttonsContainer
+{
+	grid-column-start: 2;
+	grid-column-end: 3;
+	font-size: 0;
+}
+
+input.button
+{
+	vertical-align: text-top;
+	width: 196px;
+	height: 32px;	
+	border-radius: 8px;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+input.button:first-child
+{
+	margin-right: 8px;
+}
+
+select.categories
+{	
+	width: 400px;
+	border-radius: 8px;
+	padding: 4px;
+	padding-left: 8px;
+	padding-right: 8px;	
+	font-size: 24px;
+	text-decoration: none;
+}
+
