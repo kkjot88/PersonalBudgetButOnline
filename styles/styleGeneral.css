@@ -21,6 +21,11 @@ h1
 	text-align: center;
 }
 
+p
+{
+	margin: 0;
+}
+
 input
 {	
 	box-sizing: border-box;
@@ -73,7 +78,16 @@ a
 	color: #c0c0c0;
 }
 
-/* ----> hovers <---- */
+main
+{	
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+	font-size: 28px;
+	overflow: auto;
+}
+
+	/* ----> hovers <---- */
 
 input:hover,
 select:hover,
@@ -93,16 +107,10 @@ a:hover
 	color: #ffffff;
 }
 
-/* ----> focus <---- */
+	/* ----> focus <---- */
 
 textarea:focus,
 input:focus
 {
 	border: 1px solid #ffffff;
-}
-
-main
-{
-	padding: 50px 100px 100px 50px;
-	font-size: 28px;
 }

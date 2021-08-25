@@ -1,0 +1,25 @@
+FRONTEND:
+
+	Side menu - scrolling along main content
+	
+	Side menu - created by function, spare some lines on each page
+
+DONE!	PrzegladajBilans - assemble income/expenses via js function 
+	
+DONE!	PrzegladajBilans - hide incomes/expenses with 0 value
+
+DONE!	DodajWydatek - add/remove payment methods via js function
+	
+	DodajPrzychod, DodajWydatek - rework hover highlighting from pure css to js (OPTIONAL) (could potentialy enable me to change format of divs etc. to better form?)
+	
+	DodajPrzychod, DodajWydatek - format input "Kwota" to show with thousands seperated in real time (during typing)
+	
+BACKNED:
+
+	everything! jk
+	
+	reset password from log in screen page
+	
+	date bases? accounts and its data - link it with front end?
+	
+	edit/remove user inputs
