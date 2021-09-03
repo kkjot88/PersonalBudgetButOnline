@@ -6,24 +6,21 @@ function assembleSideMenu(currentPage) {
 					{url: "Ustawienia.html", text: "Ustawienia"},
 					{url: "EkranLogowania.html", text: "Wyloguj się"}];	
 	
-	let sideMenuDiv = $("<div>");
-	sideMenuDiv.attr("id", "sideMenu");	
+	let sideMenuDiv = $("<div>").attr("id", "sideMenu");
+	let sticky = $("<div>").attr("id", "stickyNav");
 	$("nav").append(sideMenuDiv);
+	$(sideMenuDiv).append(sticky);
 	
 	allSites.forEach((site) => {		
 		if (currentPage != site.url) {			
 			let newLink = $("<a>").attr("href", `${site.url}`).addClass("menuItemLink");			
 			let newLinkDiv = $("<div>").addClass("menuItem").text(site.text);
-			$(sideMenuDiv).append(newLink);
+			$(sticky).append(newLink);
 			$(newLink).append(newLinkDiv);
 		}
 		else {		
 			let activeSiteDiv = $("<div>").attr("id","activeMenuItem").text(site.text);			
-			$(sideMenuDiv).append(activeSiteDiv);			
+			$(sticky).append(activeSiteDiv);			
 		}
 	});
-	
-	
-
-
 }

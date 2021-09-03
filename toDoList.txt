@@ -2,7 +2,7 @@ FRONTEND:
 
 	Side menu - scrolling along main content
 	
-	Side menu - created by function, spare some lines on each page
+DONE!	Side menu - created by function, spare some lines on each page
 
 DONE!	PrzegladajBilans - assemble income/expenses via js function 
 	
