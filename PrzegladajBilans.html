@@ -24,7 +24,7 @@
 	<script src="d3pie/website/libs/d3.min.js"></script>
 	<script src="d3pie/d3pie/d3pie.js"></script>
 	
-	<!-- mine !-->
+	<script src="JS/assembleSideMenu.js"></script>
 	<script src="JS/generalFunctions.js"></script>
 	
 	<script src="JS/PrzegladajBilans/enterFinancesContent.js"></script>
@@ -39,6 +39,10 @@
 	<script type="text/javascript">
 	
 		$( function() {		
+		
+			let currentPage = window.location.pathname.split("/").pop();			
+			assembleSideMenu(currentPage);
+			
 			//		dummy data to setup functions for html formatting			
 			var incomes =  [{label: "Wynagrodzenie", value: 55000},
 							{label: "Odsetki bankowe", value: 5000},
@@ -115,25 +119,7 @@
 <body style="display: grid; grid-template-columns: 218px auto;">
 
 	<nav>
-		<div id="sideMenu">
-			<a href="DodajPrzychod.html" class="menuItemLink">
-				<div class="menuItem">Dodaj przychód</div>
-			</a>
-			
-			<a href="DodajWydatek.html" class="menuItemLink">
-				<div class="menuItem">Dodaj wydatek</div>
-			</a>
-
-			<div id="activeMenuItem">Przeglądaj bilans</div>
-			
-			<a href="Ustawienia.html" class="menuItemLink">
-				<div class="menuItem">Ustawienia</div>	
-			</a>
-			
-			<a href="EkranLogowania.html" class="menuItemLink">
-				<div class="menuItem">Wyloguj się</div>	
-			</a>		
-		</div>
+		<!-- added by assembleSideMenu() !-->
 	</nav>
 		
 	<main>	
