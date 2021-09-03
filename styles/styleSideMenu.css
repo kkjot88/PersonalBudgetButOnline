@@ -14,7 +14,13 @@
 
 	box-sizing: border-box;
 	background-color: #2b2d34;
-	padding: 4px 0px 4px 4px;
+	padding-left: 4px;
+}
+
+#stickyNav
+{
+	position: sticky;
+	top: 4px;
 }
 
 #activeMenuItem

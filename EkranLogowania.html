@@ -14,16 +14,28 @@
 	
 </head>
 <body>
+
 	<main>
-		<div style="width: 750px; padding: 140px; margin: auto;">
-			<h1 style="font-size: 63px; font-weight: normal; margin: 30px;">
-				Budżet osobisty
-			</h1>
+		
+		<div class="fillerBox"></div>
+	
+		<div id="content">
+			<div class="widthFlexWrapper">
+				<h1>
+					Budżet osobisty
+				</h1>
+			</div>
 			
-			<form action="DodajPrzychod.html" style="text-align: center;">
-				<input id="username" placeholder="Nazwa użytkownika" autocomplete="off"></input>
-				<input type="password" id="password" placeholder="Hasło"></input>
-				<input type="submit" id="logInButton" value="Zaloguj się!">
+			<form action="DodajPrzychod.html">
+				<div class="widthFlexWrapper">
+					<input id="username" placeholder="Nazwa użytkownika" autocomplete="off"></input>
+				</div>
+				<div class="widthFlexWrapper">
+					<input type="password" id="password" placeholder="Hasło"></input>
+				</div>
+				<div class="widthFlexWrapper">
+					<input type="submit" id="logInButton" value="Zaloguj się!"></input>
+				</div>
 			</form>
 			
 			<div id="horizontalLine"></div>
@@ -31,9 +43,10 @@
 			<div id="other">
 				<a href="">Nie posiadasz jeszcze konta?</a>		
 				<a href="">Zapomniałeś hasło?</a>
-			</div>			
+			</div>		
+		</div>	
 		
-		<div>	
+		<div class="fillerBox"></div>
 	</main>
 </body>
 </html>

@@ -1,5 +1,12 @@
 
 		/* Style sheet for DodajPrzychod.html, DodajWyadtek.html, PrzegladajBilans.html */
+		
+main
+{
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
 
 form.data
 {	
@@ -100,17 +107,9 @@ input.button:first-child
 }
 
 #balanceRange
-{
-	width: fit-content; 
-	display: grid; 
-	grid-template-columns: auto auto auto;
-	column-gap: 10px;
+{	
+	display: flex;
 	padding-bottom: 50px;
-}
-
-#balanceRange > div
-{
-	width: fit-content;
 }
 
 #balanceRangeSelect
@@ -125,22 +124,24 @@ input.button:first-child
 
 #swapWarning
 {
+	white-space: nowrap;
 	display: inline;
 	padding-left: 10px;
 	font-size: 24px;
 	color: #ffffff;
-	visibility: hidden;
+	//visibility: hidden;
 	font-style: italic;
 }
 
 #finances
 {
-	width: 1460px;
+	width: min-content;
 	//border: 1px solid #c0c0c0;
 	display: grid;
-	grid-column-gap: 20px;
-	grid-template-columns: 300px 300px auto;
+	grid-column-gap: 10px;
+	grid-template-columns: min-content min-content min-content;
 	grid-column-color: #ffffff;
+	margin-right: 0;
 }
 
 .columnTitle
@@ -150,16 +151,21 @@ input.button:first-child
 	color: #ffffff;
 }
 
-.incomesRow,
-.expensesRow
+.row
 {
 	display: grid;
-	grid-template-columns: 150px auto;
+	grid-template-columns: 145px auto;
 	grid-column-gap: 10px;
 	
 	font-size: 18px;
+	align-items: end;
 	
 	padding: 2px;
+}
+
+.value
+{
+	white-space: nowrap;
 }
 
 div.label:first-child

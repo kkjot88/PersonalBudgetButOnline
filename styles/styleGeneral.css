@@ -6,8 +6,10 @@ html
 	min-height: 100%;
 	position: relative;
 }
+
 body
 {
+	position: absolute;
 	height: 100%;
 	margin: 0;
 	background-color: #1a1c23;
@@ -80,11 +82,11 @@ a
 
 main
 {	
-	padding-top: 50px;
-	padding-left: 50px;
-	padding-right: 50px;
+	height: 100%;
+	box-sizing: border-box;	
 	font-size: 28px;
 	overflow: auto;
+	//width: min-content;
 }
 
 	/* ----> hovers <---- */

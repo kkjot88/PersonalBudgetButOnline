@@ -44,9 +44,9 @@
 			assembleSideMenu(currentPage);
 			
 			//		dummy data to setup functions for html formatting			
-			var incomes =  [{label: "Wynagrodzenie", value: 55000},
+			var incomes =  [{label: "Wynagrodzenie", value: 999888},
 							{label: "Odsetki bankowe", value: 5000},
-							{label: "Sprzedaż na allegro", value: 5000},
+							{label: "Sprzedaż na allegro SPRAWDZAMY DLUGOSC", value: 5000},
 							{label: "Inne", value: 5000}];
 							
 			var expenses = [{label: "Jedzenie", value: 12000},
@@ -74,8 +74,8 @@
 			let positiveBalanceMsg = "Gratulacje. Świetnie zarządzasz finansami!";
 			let negativeBalanceMsg = "Uważaj, wpadasz w długi!";			
 			
-			enterFinancesContent(incomes, "#incomes", "incomesRow");			
-			enterFinancesContent(expenses, "#expenses", "expensesRow");
+			enterFinancesContent(incomes, "#incomes");			
+			enterFinancesContent(expenses, "#expenses");
 			
 			// 		new Date(year,month) behaves differently in datepicker arguments i.e 
 			// 		("#datepicker").datepicker.datepicker("setDate",new Date(2021,7,1)) will give 2021.08.01
@@ -123,29 +123,32 @@
 	</nav>
 		
 	<main>	
-		<form action="" id="balanceRange">		
-			<div style="width: fit-content;">
-				<label for="balanceRangeSelect">Okres bilansu:</label>				
-				<select name="categoriesMenu" class="finances" id="balanceRangeSelect">						
+		<form action="" id="balanceRange">
+			<div style="">
+				<label for="balanceRangeSelect">Okres bilansu:</label>
+				<select name="categoriesMenu" class="finances" id="balanceRangeSelect">
 					<option>bieżący miesiąc</option>
 					<option>poprzedni miesiąc</option>
 					<option>bieżący rok</option>
 					<option>niestandardowy</option>
-				</select>		
-			</div>			
-			
-			<div style="width: fit-content;">
+				</select>
+			</div>
+
+			<div style="">
 				<label for="datepickerFrom">Od:</label>
 				<input type="text" class="finances" name="fromWhen" autocomplete="off" id="datepickerFrom"></input>
 			</div>
-				
-			<div style="width: fit-content;">
+
+			<div style="">
 				<label for="datepickerTo">Do:</label>
 				<input type="text" class="finances" name="toWhen" autocomplete="off" id="datepickerTo"></input>
-				<p id="swapWarning">daty zostały odwrócone!</p>
 			</div>
-		</form>				
-		
+			
+			<div style="">
+			<p id="swapWarning">daty zostały odwrócone!</p>
+			</div>
+		</form>
+
 		<div id="finances">
 			<div id="incomes"> 
 				<div class="columnTitle">

@@ -1,11 +1,11 @@
-const enterFinancesContent = (finances, financeId, rowName) =>{
+const enterFinancesContent = (finances, financeId) =>{
 	
 	finances.forEach((finance) => {
 		
 		if (finance.value > 0) {
 			
 			let newIncomeRow = document.createElement('div');
-			$(newIncomeRow).addClass(rowName);
+			$(newIncomeRow).addClass("row");
 			$(financeId).append(newIncomeRow);
 			
 			let newIncomeLabel = document.createElement('div');
