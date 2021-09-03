@@ -20,11 +20,15 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="datePicker/datepickerPL.js"></script>	
 	
-	<script src="JS/assembleSidemMenu.js"></script>	
+	<script src="JS/assembleSideMenu.js"></script>	
 	
 	<script type="text/javascript">
 		
 		$( function() {
+		
+			let currentPage = window.location.pathname.split("/").pop();			
+			assembleSideMenu(currentPage);
+			
 			$.datepicker.setDefaults($.datepicker.regional['pl']);
 			$( "#datepicker" ).datepicker({
 				showOtherMonths: true,
@@ -45,11 +49,7 @@
 			//		dummy data to prepare function			
 			var paymentMethods = ["Karta kredytowa", "Gotówka", "Karta debetowa", "Inne"];
 			
-			paymentMethods.forEach((method) => $(".inputDiv #paymentMethods").append(`<option>${method}</option>`));	
-			
-			let currentPage = window.location.pathname.split("/").pop();			
-			assembleSidemMenu(currentPage);
-			
+			paymentMethods.forEach((method) => $(".inputDiv #paymentMethods").append(`<option>${method}</option>`));
 		});		
 	</script>	
 </head>
@@ -57,26 +57,7 @@
 <body style="display: grid; grid-template-columns: 218px auto;">
 
 	<nav>
-		<div id="sideMenu">
-		
-			<a href="DodajPrzychod.html" class="menuItemLink">
-				<div class="menuItem">Dodaj przychód</div>
-			</a>
-			
-			<div id="activeMenuItem">Dodaj wydatek</div>
-
-			<a href="PrzegladajBilans.html" class="menuItemLink">
-				<div class="menuItem">Przeglądaj bilans</div>
-			</a>
-			
-			<a href="Ustawienia.html" class="menuItemLink">
-				<div class="menuItem">Ustawienia</div>	
-			</a>
-			
-			<a href="EkranLogowania.html" class="menuItemLink">
-				<div class="menuItem">Wyloguj się</div>	
-			</a>		
-		</div>
+		<!-- added by assembleSideMenu() !-->
 	</nav>
 	
 	<main>
