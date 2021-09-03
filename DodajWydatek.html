@@ -18,7 +18,10 @@
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="datePicker/datepickerPL.js"></script>
+	<script src="datePicker/datepickerPL.js"></script>	
+	
+	<script src="JS/assembleSidemMenu.js"></script>	
+	
 	<script type="text/javascript">
 		
 		$( function() {
@@ -39,9 +42,15 @@
 			});			
 			$( "#datepicker" ).datepicker().datepicker("setDate",new Date());
 			
+			//		dummy data to prepare function			
+			var paymentMethods = ["Karta kredytowa", "Gotówka", "Karta debetowa", "Inne"];
 			
-		} );
-		
+			paymentMethods.forEach((method) => $(".inputDiv #paymentMethods").append(`<option>${method}</option>`));	
+			
+			let currentPage = window.location.pathname.split("/").pop();			
+			assembleSidemMenu(currentPage);
+			
+		});		
 	</script>	
 </head>
 
@@ -86,11 +95,7 @@
 			
 			<div class="inputDiv">
 				<label for="paymentMethods">Sposób płatności:</label>				
-				<select id="paymentMethods" class="finances">						
-					<option>Karta kredytowa</option>
-					<option>Gotówka</option>
-					<option>Karta debetowa</option>
-				</select>
+				<select id="paymentMethods" class="finances"></select>
 			</div>	
 			
 			<div class="inputDiv">

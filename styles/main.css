@@ -98,3 +98,107 @@ input.button:first-child
 {
 	margin-right: 8px;
 }
+
+#balanceRange
+{
+	width: fit-content; 
+	display: grid; 
+	grid-template-columns: auto auto auto;
+	column-gap: 10px;
+	padding-bottom: 50px;
+}
+
+#balanceRange > div
+{
+	width: fit-content;
+}
+
+#balanceRangeSelect
+{
+	width: 240px;
+}
+#datepickerFrom,
+#datepickerTo
+{
+	width: 145px;
+}
+
+#swapWarning
+{
+	display: inline;
+	padding-left: 10px;
+	font-size: 24px;
+	color: #ffffff;
+	visibility: hidden;
+	font-style: italic;
+}
+
+#finances
+{
+	width: 1460px;
+	//border: 1px solid #c0c0c0;
+	display: grid;
+	grid-column-gap: 20px;
+	grid-template-columns: 300px 300px auto;
+	grid-column-color: #ffffff;
+}
+
+.columnTitle
+{
+	text-align: center;
+	padding-bottom: 10px;
+	color: #ffffff;
+}
+
+.incomesRow,
+.expensesRow
+{
+	display: grid;
+	grid-template-columns: 150px auto;
+	grid-column-gap: 10px;
+	
+	font-size: 18px;
+	
+	padding: 2px;
+}
+
+div.label:first-child
+{
+	text-align: right;
+}
+
+#balanceSummary
+{
+	display: grid;
+	grid-template-columns: 360px auto;
+}
+#balanceSummary *
+{
+	font-size: 24px;
+}
+
+div.total
+{
+	display: grid; 
+	grid-template-columns: 220px auto;
+	grid-column-gap: 4px;
+	padding-bottom: 10px;
+}
+
+div.total > div:first-child
+{
+	text-align: right;
+}
+
+#balance div
+{
+	text-align:center;
+	padding-bottom: 8px;
+}
+
+#balance div:last-child
+{
+	font-weight: bold;
+	font-style: italic;
+	font-size: 26px;
+}
