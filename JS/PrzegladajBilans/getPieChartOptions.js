@@ -44,11 +44,13 @@ function getPieChartOptions(pieChartData) {
 			},
 			mainLabel: {
 				color: "#ffffff",
-				fontSize: 16
+				fontSize: 16,
+				font: "calibri"
 			},
 			percentage: {
 				color: "#ffffff",
 				fontSize: 16,
+				font: "calibri",
 				decimalPlaces: 0
 			},
 			value: {
@@ -73,7 +75,9 @@ function getPieChartOptions(pieChartData) {
 				backgroundOpacity: 0.8,
 				color: "#ffffff",
 				borderRadius: 4,
-				fontSize: 16
+				fontSize: 16,				
+				font: "calibri",
+				padding: 4
 			}
 		},
 		effects: {

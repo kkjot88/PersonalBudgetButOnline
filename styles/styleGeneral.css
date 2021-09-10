@@ -11,10 +11,11 @@ body
 {
 	position: absolute;
 	height: 100%;
+	width: 100%;
 	margin: 0;
 	background-color: #1a1c23;
 	color: #c0c0c0;
-	font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
+	font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif !important;
 }
 
 h1
@@ -30,6 +31,7 @@ p
 
 input
 {	
+	font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif !important;
 	box-sizing: border-box;
 	background-color: #1a1c23;
 	color: #ffffff;
@@ -48,6 +50,7 @@ input[type=submit]
 
 select
 {
+	font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif !important;
 	color: #ffffff;
 	outline: none;
 	border: 1px solid #c0c0c0;
@@ -67,6 +70,7 @@ select
 
 textarea
 {
+	font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif !important;
 	border: 1px solid #c0c0c0;
 	background-color: #1a1c23;
 	color: #ffffff;
@@ -86,7 +90,6 @@ main
 	box-sizing: border-box;	
 	font-size: 28px;
 	overflow: auto;
-	//width: min-content;
 }
 
 	/* ----> hovers <---- */

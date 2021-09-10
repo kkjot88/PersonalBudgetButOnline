@@ -1,0 +1,106 @@
+
+		/* Style sheet for DodajPrzychod.html, DodajWyadtek.html, */
+
+body
+{
+	display: grid;
+	grid-template-columns: 218px auto;
+}
+
+main
+{
+	width: 100%;
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 10px;
+}
+
+#data
+{	
+	display: grid;	
+	grid-template-columns: minmax(min-content, max-content) minmax(238px, 800px);
+	grid-row-gap: 20px;
+	column-gap: 10px;
+}
+
+label
+{
+	justify-self: right;
+	text-align: right;
+	height: max-content;
+}
+
+/*#amount, #datepicker, #categoriesMenu, #paymentMethods, #comment*/
+
+input, select, textarea
+{
+	border-radius: 8px;
+	padding-top: 2px;
+	padding-bottom: 6px;
+	padding-left: 12px;
+	padding-right: 12px;
+	font-size: 24px;
+}
+
+#amountWrapper
+{
+	position: relative;
+	display: flex;
+}
+
+#amount
+{
+	width: 100%;
+	padding-right: 30px;
+}
+
+#currency
+{
+	position: absolute;
+	right: 12px;
+	pointer-events : none;
+}
+
+#amountWrapper, #datepicker, #categoriesMenu, #paymentMethods
+{
+	max-width: 400px;
+}
+
+#comment
+{	
+	height: 200px;
+	resize: none;	
+}
+
+#categoriesMenu,
+#paymentMethods
+{	
+	text-decoration: none;
+	max-height: 38px;
+	align-self: end;
+	cursor: pointer;
+}
+
+div.buttonsContainer
+{
+	max-width: 400px;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	font-size: 0;	
+}
+
+input.button
+{
+	vertical-align: text-top;
+	width: 48%;
+	height: 32px;	
+	border-radius: 8px;
+	font-size: 24px;
+	font-weight: bold;
+	padding: 0;
+}
+
+input.button:first-child
+{
+	margin-right: 8px;
+}

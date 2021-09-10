@@ -2,19 +2,19 @@
 <html lang = "pl" >
 <head>
 	<meta charset="utf-8"/>
-	<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1"/>
+	<meta http-equiv = "X-UA-Compatible" content = "IE=edge"/>
 	
 	<title>Budżet osobisty</title>
 	
 	<meta name="description" content="Strona służąca do zapanowania nad swoim budżetem osobistym" />
 	<meta name="keywords" content="finanse, budzet, budżet, rachunki, rachunkowość, pieniądze, bilans, wydatki, wydatek, dochodzy, przychody"/>
 	
-	<link rel="stylesheet" href="styles/styleGeneral.css" type="text/css"></link>
-	<link rel="stylesheet" href="styles/styleSideMenu.css" type="text/css"></link>
-	<link rel="stylesheet" href="styles/main.css" type="text/css"></link>
+	<link rel="stylesheet" href="styles/styleGeneral.css" type="text/css">
+	<link rel="stylesheet" href="styles/styleSideMenu.css" type="text/css">
+	<link rel="stylesheet" href="styles/styleViewBalance.css" type="text/css">
 	
-	<link rel="stylesheet" href="styles/fontello/fontello.css" type="text/css"></link>
-	<link rel="stylesheet" href="datePicker/datePickerStyle.css" type="text/css"></link>	
+	<link rel="stylesheet" href="styles/fontello/fontello.css" type="text/css">
+	<link rel="stylesheet" href="datePicker/datePickerStyle.css" type="text/css">	
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
@@ -23,6 +23,9 @@
 	<!--	https://www.jqueryscript.net/chart-graph/Nice-Configuarable-Pie-Donut-Chart-with-jQuery-D3-js-d3pie.html	!-->
 	<script src="d3pie/website/libs/d3.min.js"></script>
 	<script src="d3pie/d3pie/d3pie.js"></script>
+	
+	<!-- https://github.com/nosir/cleave.js !-->
+	<script src="cleave/cleave.min.js"></script>
 	
 	<script src="JS/assembleSideMenu.js"></script>
 	<script src="JS/generalFunctions.js"></script>
@@ -36,7 +39,7 @@
 	<script src="JS/PrzegladajBilans/getRandomGrayscaleColor.js"></script>
 	<script src="JS/PrzegladajBilans/getPieChartOptions.js"></script>
 	
-	<script type="text/javascript">
+	<script>
 	
 		$( function() {		
 		
@@ -44,9 +47,9 @@
 			assembleSideMenu(currentPage);
 			
 			//		dummy data to setup functions for html formatting			
-			var incomes =  [{label: "Wynagrodzenie", value: 999888},
+			var incomes =  [{label: "Wynagrodzenie", value: 11999888},
 							{label: "Odsetki bankowe", value: 5000},
-							{label: "Sprzedaż na allegro SPRAWDZAMY DLUGOSC", value: 5000},
+							{label: "Sprzedaż na allegro", value: 5000},
 							{label: "Inne", value: 5000}];
 							
 			var expenses = [{label: "Jedzenie", value: 12000},
@@ -67,16 +70,6 @@
 							{label: "Darowizna", value: 3},
 							{label: "Inne wydatki", value: 790},].sort((a, b) => (b.value - a.value));;
 			
-			let incomesTotal = countTotal(incomes);
-			let expensesTotal = countTotal(expenses);
-			let balance = incomesTotal - expensesTotal;
-			
-			let positiveBalanceMsg = "Gratulacje. Świetnie zarządzasz finansami!";
-			let negativeBalanceMsg = "Uważaj, wpadasz w długi!";			
-			
-			enterFinancesContent(incomes, "#incomes");			
-			enterFinancesContent(expenses, "#expenses");
-			
 			// 		new Date(year,month) behaves differently in datepicker arguments i.e 
 			// 		("#datepicker").datepicker.datepicker("setDate",new Date(2021,7,1)) will give 2021.08.01
 			// 		whereas var date = new Date(2021,7,1) will give 2021.07.01
@@ -92,22 +85,26 @@
 			
 			datePickersSetup(year, currentMonth, numberOfDaysInCurrentMonth);
 			
-			rangeSelectFormating(year, currentMonth, prevMonth, numberOfDaysInCurrentMonth, numberOfDaysInPrevMonth);			
-			
-			//		not needed if data comes from external source, might be useful codewise
-			
-			//expenses = getExpensesData();		
-			//sortExpensesDivs(expenses);	
+			rangeSelectFormating(year, currentMonth, prevMonth, numberOfDaysInCurrentMonth, numberOfDaysInPrevMonth);		
 
-			//		must be enclosed by function - don't know why
+			enterFinancesContent(incomes, "#incomesTable");			
+			enterFinancesContent(expenses, "#expensesTable");
 			
+			let incomesTotal = countTotal(incomes);
+			let expensesTotal = countTotal(expenses);
+			let balance = incomesTotal - expensesTotal;
+			
+			let positiveBalanceMsg = "Gratulacje. Świetnie zarządzasz finansami!";
+			let negativeBalanceMsg = "Uważaj, wpadasz w długi!";			
+			
+			//		must be enclosed by function - don't know why
 			$(function() {
 				var pieChartData = assemblePieChartData(expenses);			
 				var pie = new d3pie("pieChart", getPieChartOptions(pieChartData));
-			});			
-				
-			$("#totals .total div").first().next().text(`${formatAmount(incomesTotal)}zł`);			
-			$("#totals .total div").last().text(`${formatAmount(expensesTotal)}zł`);
+			});							
+			
+			$("#total #amounts div").first().text(`${formatAmount(incomesTotal)}zł`);
+			$("#total #amounts div").last().text(`${formatAmount(expensesTotal)}zł`);
 			
 			$("#balanceSummary #balance div").first().text(`Saldo: ${formatAmount(balance)}zł`);
 			if (balance >= 0) $("#balanceSummary #balance div").last().text(positiveBalanceMsg).css("color","#008000");			
@@ -116,7 +113,7 @@
 	</script>	
 </head>
 
-<body style="display: grid; grid-template-columns: 218px auto;">
+<body>
 
 	<nav>
 		<!-- added by assembleSideMenu() !-->
@@ -124,9 +121,9 @@
 		
 	<main>	
 		<form action="" id="balanceRange">
-			<div style="">
+			<div class="flexWrapper">
 				<label for="balanceRangeSelect">Okres bilansu:</label>
-				<select name="categoriesMenu" class="finances" id="balanceRangeSelect">
+				<select name="categoriesMenu" id="balanceRangeSelect">
 					<option>bieżący miesiąc</option>
 					<option>poprzedni miesiąc</option>
 					<option>bieżący rok</option>
@@ -134,17 +131,17 @@
 				</select>
 			</div>
 
-			<div style="">
+			<div class="flexWrapper">
 				<label for="datepickerFrom">Od:</label>
-				<input type="text" class="finances" name="fromWhen" autocomplete="off" id="datepickerFrom"></input>
+				<input type="text" name="fromWhen" autocomplete="off" id="datepickerFrom">
 			</div>
 
-			<div style="">
+			<div class="flexWrapper">
 				<label for="datepickerTo">Do:</label>
-				<input type="text" class="finances" name="toWhen" autocomplete="off" id="datepickerTo"></input>
+				<input type="text" name="toWhen" autocomplete="off" id="datepickerTo">
 			</div>
 			
-			<div style="">
+			<div class="flexWrapper">
 			<p id="swapWarning">daty zostały odwrócone!</p>
 			</div>
 		</form>
@@ -153,13 +150,19 @@
 			<div id="incomes"> 
 				<div class="columnTitle">
 					Przychody:
-				</div>					
+				</div>
+				<div id="incomesTable">
+				
+				</div>
 			</div>	
 			
 			<div id="expenses">
 				<div class="columnTitle">
 					Wydatki:
-				</div>				
+				</div>
+				<div id="expensesTable">
+				
+				</div>
 			</div>
 			
 			<div id="summary">		
@@ -171,14 +174,14 @@
 				<div id="pieChart"></div>				
 				
 				<div id="balanceSummary">
-					<div id="totals">
-						<div class="total">
+					<div id="total">
+						<div id="labels">
 							<div>Suma przychodów:</div>
-							<div>500000000</div>
-						</div>
-						<div class="total">
 							<div>Suma wydatków:</div>
-							<div>500000000</div>						
+						</div>
+						<div id="amounts">
+							<div>9 999 999 999zl</div>
+							<div>9 999 999 999zl</div>						
 						</div>
 					</div>	
 					<div id="balance">

@@ -1,0 +1,162 @@
+
+		/* Style sheet for PrzegladajBilans.html */
+		
+body
+{
+	display: grid; 
+	grid-template-columns: 218px auto;
+}
+
+main
+{
+	width: 100%;
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+input,
+select
+{	
+	border-radius: 8px;
+	padding-top: 3px;
+	padding-bottom: 5px;
+	padding-left: 12px;
+	padding-right: 8px;
+	font-size: 24px;
+	height: 40px;
+}
+
+#balanceRange
+{	
+	display: flex;
+	padding-bottom: 50px;
+	gap: 10px;
+}
+
+#balanceRangeSelect
+{
+	width: 240px;
+}
+
+.flexWrapper
+{
+	flex: 0 0 auto;
+}
+
+#datepickerFrom,
+#datepickerTo
+{
+	width: 145px;
+}
+
+#swapWarning
+{
+	white-space: nowrap;
+	display: inline;
+	padding-left: 10px;
+	font-size: 24px;
+	color: #ffff00;
+	visibility: hidden;
+	font-style: italic;
+}
+
+#finances
+{
+	width: min-content;
+	display: grid;
+	grid-column-gap: 10px;
+	grid-template-columns: min-content min-content min-content;
+	margin-right: 0;
+}
+
+.columnTitle
+{
+	text-align: center;
+	padding-bottom: 5px;
+	color: #ffffff;
+}
+
+#incomesTable,
+#expensesTable
+{
+	width: min-content;
+	display: grid;	
+	grid-template-columns: max-content max-content;
+	column-gap: 10px;
+	row-gap: 4px;
+}
+
+.financeLabel,
+.financeAmount
+{
+	font-size: 18px;
+	width: max-content;	
+}
+	
+.financeLabel
+{
+	max-width: 200px;
+	justify-self: end;
+	text-align: right;	
+}
+
+.financeAmount
+{
+	align-self: end;
+	justify-self: end;
+}
+
+#balanceSummary
+{
+	display: flex;
+	gap: 20px;
+	font-size: 24px;
+}
+
+#total,
+#balance
+{
+	display: flex;
+}
+
+#total
+{
+	gap: 5px;
+}
+
+#labels,
+#amounts
+{
+	flex: 0 0 auto;
+}
+
+#labels div,
+#amounts div
+{
+	padding-bottom: 8px;
+}
+
+#labels
+{
+	text-align: right;
+}
+
+#balance
+{
+	flex: 1 0 auto;
+	flex-flow: column;
+}
+
+#balance div
+{
+	text-align:center;
+	padding-bottom: 8px;
+}
+
+#balance div:last-child
+{
+	font-weight: bold;
+	font-style: italic;
+	font-size: 26px;
+}

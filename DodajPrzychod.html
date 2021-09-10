@@ -2,27 +2,31 @@
 <html lang = "pl" >
 <head>
 	<meta charset="utf-8"/>
-	<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	
 	<title>Budżet osobisty</title>
 	
 	<meta name="description" content="Strona służąca do zapanowania nad swoim budżetem osobistym" />
 	<meta name="keywords" content="finanse, budzet, budżet, rachunki, rachunkowość, pieniądze, bilans, wydatki, wydatek, dochodzy, przychody"/>
 	
-	<link rel="stylesheet" href="styles/styleGeneral.css" type="text/css"></link>
-	<link rel="stylesheet" href="styles/styleSideMenu.css" type="text/css"></link>
-	<link rel="stylesheet" href="styles/main.css" type="text/css"></link>
+	<link rel="stylesheet" href="styles/styleGeneral.css" type="text/css">
+	<link rel="stylesheet" href="styles/styleSideMenu.css" type="text/css">
+	<link rel="stylesheet" href="styles/styleAddIncomeExpense.css" type="text/css">
 	
-	<link rel="stylesheet" href="styles/fontello/fontello.css" type="text/css"></link>
-	<link rel="stylesheet" href="datePicker/datePickerStyle.css" type="text/css"></link>
+	<link rel="stylesheet" href="styles/fontello/fontello.css" type="text/css">
+	<link rel="stylesheet" href="datePicker/datePickerStyle.css" type="text/css">
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="datePicker/datepickerPL.js"></script>
 	
 	<script src="JS/assembleSideMenu.js"></script>
+	<script src="JS/generalFunctions.js"></script>
 	
-	<script type="text/javascript">
+	<!-- https://github.com/nosir/cleave.js !-->
+	<script src="cleave/cleave.min.js"></script>
+	
+	<script>
 		
 		$( function() {
 		
@@ -36,61 +40,78 @@
 				nextText: "",
 				prevText: "",
 				beforeShow: function() {
-					$(this).parent().css("color", "#ffffff");
+					$(this).prev().css("color", "#ffffff");
 					$(this).css("border-color", "#ffffff");
 				},
 				onClose: function() {
-					$(this).parent().css("color", "#c0c0c0");
+					$(this).prev().css("color", "#c0c0c0");
 					$(this).css("border-color", "#c0c0c0");
+					$(this).blur();
 				}
 			});			
-			$( "#datepicker" ).datepicker().datepicker("setDate",new Date());			
-		} );		
+			$( "#datepicker" ).datepicker().datepicker("setDate",new Date());				
+			
+			focusGroup("#amount", ["label[for='amount']", "#currency"]);
+			hoverGroup("#amount", ["label[for='amount']", "#currency"]);
+			hoverGroup("#datepicker", ["label[for='datepicker']"]);
+			focusGroup("#categoriesMenu", ["label[for='categoriesMenu']"]);
+			hoverGroup("#categoriesMenu", ["label[for='categoriesMenu']"]);
+			focusGroup("#comment", ["label[for='comment']"]);		
+			hoverGroup("#comment", ["label[for='comment']"]);		
+
+			var amountInputFormating = new Cleave('#amount', {
+				numeral: true,
+				delimiter: ' ',
+				numeralDecimalMark: ',',
+				numeralThousandsGroupStyle: 'thousand'
+			});
+			
+			var dateInputFormating = new Cleave('#datepicker', {
+				date: true,
+				delimiter: '.',
+				numeralDecimalMark: ',',
+				datePattern: ['d', 'm', 'Y']
+			});
+		} );	
+		
 	</script>	
 </head>
 
-<body style="display: grid; grid-template-columns: 218px auto;">
+<body>
 
 	<nav>
 		<!-- added by assembleSideMenu() !-->
 	</nav>
 	
 	<main>
-		<form action=""	class="data">
+		<form action=""	id="data">
 		
-			<div class="inputDiv" name="amount">
 				<label for="amount">Kwota:</label>
-				<input type="text" class="finances" id="amount" autocomplete="off"></input>	
-				<div>zł</div>
-			</div>
-			
-			<div class="inputDiv" >
+				<div id="amountWrapper">
+					<input type="text" id="amount" autocomplete="off">
+					<span id="currency">zł</span>
+				</div>
+				
 				<label for="datepicker">Data:</label>
-				<input type="text" class="finances" name="date" autocomplete="off" id="datepicker"></input>					
-			</div>				
+				<input type="text" name="date" autocomplete="off" id="datepicker">	
 			
-			<div class="inputDiv">
-				<label for="categoriesMenu">Wybierz kategorię:</label>				
-				<select id="categoriesMenu" class="finances">						
+				<label for="categoriesMenu" id="categoryLabel">Wybierz kategorię:</label>				
+				<select id="categoriesMenu">						
 					<option>Wynagrodzenie</option>
 					<option>Odsetki bankowe</option>
 					<option>Sprzedaż na allegro</option>
 					<option>Inne</option>
-				</select>
-			</div>									
+				</select>					
 			
-			<div class="inputDiv">
-				<label for="comment">Komentarz:</label>
-				<textarea type="text" class="finances" id="comment" placeholder="Pole nie wymagane"></textarea>
-			</div>									
-			
-			<div class="inputDiv">
+				<label for="comment">Komentarz:</label>				
+				<textarea id="comment" placeholder="Pole nie wymagane"></textarea>
+				
 				<div class="buttonsContainer">
-					<input type="submit" class="button" value="Dodaj"></input>
-					<input type="submit" class="button" value="Anuluj"></input>
-				</div>
-			</div>				
+					<input type="submit" class="button" value="Dodaj">
+					<input type="submit" class="button" value="Anuluj">
+				</div>				
 		</form>
 	</main>
 </body>
 </html>
+

@@ -26,8 +26,21 @@ function datePickersSetup(year, currentMonth, numberOfDaysInCurrentMonth) {
 			function() {$(this).css("border-color","#ffffff")},
 			function() {$(this).css("border-color","#c0c0c0")}
 			);
+			$(this).blur();
 		}
 	});			
 	$( "#datepickerFrom" ).datepicker().datepicker("setDate",new Date(year,currentMonth,1));
 	$( "#datepickerTo" ).datepicker().datepicker("setDate",new Date(year,currentMonth,numberOfDaysInCurrentMonth));
+	
+	var dateFromInputFormating = new Cleave('#datepickerFrom', {
+		date: true,
+		delimiter: '.',
+		datePattern: ['d', 'm', 'Y']
+	});
+	
+	var dateToInputFormating = new Cleave('#datepickerTo', {
+		date: true,
+		delimiter: '.',
+		datePattern: ['d', 'm', 'Y']
+	});
 }

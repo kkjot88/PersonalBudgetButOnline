@@ -1,10 +1,5 @@
 
-		/* Style sheet for log in screen .html's */
-		
-body
-{
-	width: 100%;
-}
+		/* Style sheet for EkranLogowania.html */
 		
 main
 {	 
@@ -12,7 +7,7 @@ main
 	display: flex; 
 	flex-flow: column; 
 	height: 100%;  
-	width: 100%;"	
+	width: 100%;	
 }
 
 .fillerBox
@@ -60,8 +55,8 @@ form
 	height: 40px;
 	margin-bottom: 24px;
 	border-radius: 8px;
-	padding-top: 4px;
-	padding-bottom: 4px;
+	padding-top: 2px;
+	padding-bottom: 6px;
 	text-align: center;
 	font-size: 24px;
 	flex: 0 1 400px;
