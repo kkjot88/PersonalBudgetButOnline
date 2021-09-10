@@ -10,8 +10,6 @@
 	<meta name="keywords" content="finanse, budzet, budżet, rachunki, rachunkowość, pieniądze, bilans, wydatki, wydatek, dochodzy, przychody"/>
 	
 	<link rel="stylesheet" href="styles/styleGeneral.css" type="text/css"></link>
-	<link rel="stylesheet" href="styles/styleSideMenu.css" type="text/css"></link>
-	<link rel="stylesheet" href="styles/main.css" type="text/css"></link>
 	
 	<link rel="stylesheet" href="styles/fontello/fontello.css" type="text/css"></link>
 	<link rel="stylesheet" href="datePicker/datePickerStyle.css" type="text/css"></link>	
@@ -22,72 +20,103 @@
 	
 	<!--	https://www.jqueryscript.net/chart-graph/Nice-Configuarable-Pie-Donut-Chart-with-jQuery-D3-js-d3pie.html	!-->
 	<script src="d3pie/website/libs/d3.min.js"></script>
-	<script src="d3pie/d3pie/d3pie.js"></script>
+	<script src="d3pie/d3pie/d3pie.js"></script>	
 	
-	<!--	https://github.com/Fooidge/PleaseJS !-->
-	<script src="PleaseJS/dist/Please.js"></script>
-	<script src="randomColor.js"></script>
+	<script src="JS/generalFunctions.js"></script>
 	
 	
+	<script src="JS/PrzegladajBilans/divWidthWrapResize.js"></script>
 	
-	<script type="text/javascript">		
+	
+	
+	<script type="text/javascript">
+	
+		$( function() {				
 			
-			$(function() {
-				
-				var expenses = [{label: "xddddddd", value: 500},
-								{label: "XDDD", value: 1000},
-								{label: ":)))", value: 1500},
-								{label: ":]]]", value: 2000}]
-				
-				function getRandomColor(min, max) {
-					min = Math.ceil(min);
-					max = Math.floor(max);
-					var randomNumber = Math.floor(Math.random() * (max - min)) + min;
-					var randomNumberString = String(randomNumber);
-					return "rgb(" + randomNumberString + "," + randomNumberString + "," + randomNumberString + ")"
-				}			
+			//		dummy data to setup functions for html formatting			
+			var incomes =  [{label: "Wynagrodzenie", value: 11999888},
+							{label: "Odsetki bankowe", value: 5000},
+							{label: "Sprzedaż na allegro SPRAWDZAMY DLUGOSC", value: 5000},
+							{label: "Inne", value: 5000}];
+							
+			var expenses = [{label: "Jedzenie", value: 12000},
+							{label: "Jedzenie", value: 1300},
+							{label: "Mieszkanie", value: 300},
+							{label: "Transport", value: 300},
+							{label: "Telekomunikacja", value: 60},
+							{label: "Ubranie", value: 500},
+							{label: "Higiena", value: 700},
+							{label: "Dzieci", value: 3200},
+							{label: "Rozrywka", value: 600},
+							{label: "Wycieczki", value: 3000},
+							{label: "Szkolenia", value: 9000},
+							{label: "Książki", value: 500},
+							{label: "Oszczędności", value: 0},
+							{label: "Emerytura", value: 20},
+							{label: "Spłata długów", value: 1200},
+							{label: "Darowizna", value: 3},
+							{label: "Inne wydatki", value: 790},].sort((a, b) => (b.value - a.value));;
 						
-				$("body").css("background-color",getRandomColor(80,160));
-				
-				console.log(expenses);
-				console.log(getRandomColor(80,160));
-			
-				var pieChartaData = [];
-				
-				for (var i=0; i<expenses.length; i++) {
-				
-					var pieChartItem = {};
-					
-					pieChartItem.label = expenses[i].label;
-					pieChartItem.value = expenses[i].value;			
+			var finances = incomes.concat(expenses);
 
-					if (pieChartItem.value > 0) pieChartaData.push(pieChartItem);
-				}
-			
-				var pie = new d3pie("pieChart", {
-					header: {
-						title: {
-							text: "xd",
-							color: "#ffffff"
-						}
-							},
-							size: {
-								pieOuterRadius: "100%",
-								canvasHeight: 360
-							},
-							data: {
-								content: pieChartaData
-							}
-				});
-			});
-			
+			finances.forEach((finance) => {
 		
-	</script>	
+				let div1 = document.createElement("div");
+				let div2 = document.createElement("div");
+				$(div1).text(finance.label).addClass("fin1");
+				$(div2).text(`${formatAmount(finance.value)}zł`).addClass("fin2");
+			
+				$("#main").append(div1);
+				$("#main").append(div2);
+		
+			});	
+			
+			divWidthWrapResize(".fin1");			
+				
+		});
+							
+		
+							
+	</script>
+	
+	<style>
+	.fin1
+	{
+		background-color: #2b2d34;
+		color: red;
+		width: max-content;
+		max-width: 200px;
+		justify-self: end;
+		text-align: right;		
+	}
+	
+	.fin2
+	{
+		background-color:
+		#2b2d34;
+		color: yellow;
+		width: max-content;
+		align-self: end;
+	}
+		
+	</style>
+	
 </head>
 
 <body>
+
+	<div id="main" style="
+				width: min-content;
+				display: inline-grid;	
+				grid-template-columns: max-content  max-content;
+				column-gap: 20px;
+				row-gap: 20px;
+				//justify-items: end;
+	">
 	
-	<div id="pieChart"></div>
+	
+	</div>
+	
 
 </body>
 </html>

@@ -3,6 +3,7 @@
 		
 main
 {
+	width: 100%;
 	padding-top: 50px;
 	padding-left: 50px;
 	padding-right: 50px;
@@ -110,12 +111,19 @@ input.button:first-child
 {	
 	display: flex;
 	padding-bottom: 50px;
+	gap: 10px;
 }
 
 #balanceRangeSelect
 {
 	width: 240px;
 }
+
+.flexWrapper
+{
+	flex: 0 0 auto;
+}
+
 #datepickerFrom,
 #datepickerTo
 {
@@ -128,8 +136,8 @@ input.button:first-child
 	display: inline;
 	padding-left: 10px;
 	font-size: 24px;
-	color: #ffffff;
-	//visibility: hidden;
+	color: #ffff00;
+	visibility: hidden;
 	font-style: italic;
 }
 
@@ -147,53 +155,81 @@ input.button:first-child
 .columnTitle
 {
 	text-align: center;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 	color: #ffffff;
 }
 
-.row
+#incomesTable,
+#expensesTable
 {
-	display: grid;
-	grid-template-columns: 145px auto;
-	grid-column-gap: 10px;
-	
+	width: min-content;
+	display: grid;	
+	grid-template-columns: max-content max-content;
+	column-gap: 10px;
+	row-gap: 4px;
+}
+
+.financeLabel,
+.financeAmount
+{
 	font-size: 18px;
-	align-items: end;
+	width: max-content;	
+
+	//background-color: #2b2d34;
+	//color: red;
+}
 	
-	padding: 2px;
+.financeLabel
+{
+	max-width: 200px;
+	justify-self: end;
+	text-align: right;	
 }
 
-.value
+.financeAmount
 {
-	white-space: nowrap;
-}
-
-div.label:first-child
-{
-	text-align: right;
+	align-self: end;
 }
 
 #balanceSummary
 {
-	display: grid;
-	grid-template-columns: 360px auto;
-}
-#balanceSummary *
-{
+	display: flex;
+	gap: 20px;
 	font-size: 24px;
 }
 
-div.total
+#total,
+#balance
 {
-	display: grid; 
-	grid-template-columns: 220px auto;
-	grid-column-gap: 4px;
-	padding-bottom: 10px;
+	display: flex;
 }
 
-div.total > div:first-child
+#total
+{
+	gap: 5px;
+}
+
+#labels,
+#amounts
+{
+	flex: 0 0 auto;
+}
+
+#labels div,
+#amounts div
+{
+	padding-bottom: 8px;
+}
+
+#labels
 {
 	text-align: right;
+}
+
+#balance
+{
+	flex: 1 0 auto;
+	flex-flow: column;
 }
 
 #balance div

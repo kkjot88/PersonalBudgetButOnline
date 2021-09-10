@@ -4,17 +4,15 @@ const enterFinancesContent = (finances, financeId) =>{
 		
 		if (finance.value > 0) {
 			
-			let newIncomeRow = document.createElement('div');
-			$(newIncomeRow).addClass("row");
-			$(financeId).append(newIncomeRow);
+			let div1 = document.createElement("div");
+				let div2 = document.createElement("div");
+				$(div1).text(finance.label+":").addClass("financeLabel");
+				$(div2).text(`${formatAmount(finance.value)}zł`).addClass("financeAmount");
 			
-			let newIncomeLabel = document.createElement('div');
-			$(newIncomeLabel).addClass("label").html(`${finance.label}:`);				
-			$(newIncomeRow).append(newIncomeLabel);
-			
-			let newIncomeValue = document.createElement('div');
-			$(newIncomeValue).addClass("value").html(`${formatAmount(finance.value)}zł`);
-			$(newIncomeRow).append(newIncomeValue);
+				$(financeId).append(div1);
+				$(financeId).append(div2);
 		}
 	});
+	
+	divWidthWrapResize(".financeLabel");
 }

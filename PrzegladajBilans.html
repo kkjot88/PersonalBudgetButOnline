@@ -44,9 +44,9 @@
 			assembleSideMenu(currentPage);
 			
 			//		dummy data to setup functions for html formatting			
-			var incomes =  [{label: "Wynagrodzenie", value: 999888},
+			var incomes =  [{label: "Wynagrodzenie", value: 11999888},
 							{label: "Odsetki bankowe", value: 5000},
-							{label: "Sprzedaż na allegro SPRAWDZAMY DLUGOSC", value: 5000},
+							{label: "Sprzedaż na allegro", value: 5000},
 							{label: "Inne", value: 5000}];
 							
 			var expenses = [{label: "Jedzenie", value: 12000},
@@ -67,16 +67,6 @@
 							{label: "Darowizna", value: 3},
 							{label: "Inne wydatki", value: 790},].sort((a, b) => (b.value - a.value));;
 			
-			let incomesTotal = countTotal(incomes);
-			let expensesTotal = countTotal(expenses);
-			let balance = incomesTotal - expensesTotal;
-			
-			let positiveBalanceMsg = "Gratulacje. Świetnie zarządzasz finansami!";
-			let negativeBalanceMsg = "Uważaj, wpadasz w długi!";			
-			
-			enterFinancesContent(incomes, "#incomes");			
-			enterFinancesContent(expenses, "#expenses");
-			
 			// 		new Date(year,month) behaves differently in datepicker arguments i.e 
 			// 		("#datepicker").datepicker.datepicker("setDate",new Date(2021,7,1)) will give 2021.08.01
 			// 		whereas var date = new Date(2021,7,1) will give 2021.07.01
@@ -92,22 +82,26 @@
 			
 			datePickersSetup(year, currentMonth, numberOfDaysInCurrentMonth);
 			
-			rangeSelectFormating(year, currentMonth, prevMonth, numberOfDaysInCurrentMonth, numberOfDaysInPrevMonth);			
-			
-			//		not needed if data comes from external source, might be useful codewise
-			
-			//expenses = getExpensesData();		
-			//sortExpensesDivs(expenses);	
+			rangeSelectFormating(year, currentMonth, prevMonth, numberOfDaysInCurrentMonth, numberOfDaysInPrevMonth);		
 
-			//		must be enclosed by function - don't know why
+			enterFinancesContent(incomes, "#incomesTable");			
+			enterFinancesContent(expenses, "#expensesTable");
 			
+			let incomesTotal = countTotal(incomes);
+			let expensesTotal = countTotal(expenses);
+			let balance = incomesTotal - expensesTotal;
+			
+			let positiveBalanceMsg = "Gratulacje. Świetnie zarządzasz finansami!";
+			let negativeBalanceMsg = "Uważaj, wpadasz w długi!";			
+			
+			//		must be enclosed by function - don't know why
 			$(function() {
 				var pieChartData = assemblePieChartData(expenses);			
 				var pie = new d3pie("pieChart", getPieChartOptions(pieChartData));
-			});			
-				
-			$("#totals .total div").first().next().text(`${formatAmount(incomesTotal)}zł`);			
-			$("#totals .total div").last().text(`${formatAmount(expensesTotal)}zł`);
+			});							
+			
+			$("#total #amounts div").first().text(`${formatAmount(incomesTotal)}zł`);
+			$("#total #amounts div").last().text(`${formatAmount(expensesTotal)}zł`);
 			
 			$("#balanceSummary #balance div").first().text(`Saldo: ${formatAmount(balance)}zł`);
 			if (balance >= 0) $("#balanceSummary #balance div").last().text(positiveBalanceMsg).css("color","#008000");			
@@ -124,7 +118,7 @@
 		
 	<main>	
 		<form action="" id="balanceRange">
-			<div style="">
+			<div class="flexWrapper">
 				<label for="balanceRangeSelect">Okres bilansu:</label>
 				<select name="categoriesMenu" class="finances" id="balanceRangeSelect">
 					<option>bieżący miesiąc</option>
@@ -134,17 +128,17 @@
 				</select>
 			</div>
 
-			<div style="">
+			<div class="flexWrapper">
 				<label for="datepickerFrom">Od:</label>
 				<input type="text" class="finances" name="fromWhen" autocomplete="off" id="datepickerFrom"></input>
 			</div>
 
-			<div style="">
+			<div class="flexWrapper">
 				<label for="datepickerTo">Do:</label>
 				<input type="text" class="finances" name="toWhen" autocomplete="off" id="datepickerTo"></input>
 			</div>
 			
-			<div style="">
+			<div class="flexWrapper">
 			<p id="swapWarning">daty zostały odwrócone!</p>
 			</div>
 		</form>
@@ -153,13 +147,19 @@
 			<div id="incomes"> 
 				<div class="columnTitle">
 					Przychody:
-				</div>					
+				</div>
+				<div id="incomesTable">
+				
+				</div>
 			</div>	
 			
 			<div id="expenses">
 				<div class="columnTitle">
 					Wydatki:
-				</div>				
+				</div>
+				<div id="expensesTable">
+				
+				</div>
 			</div>
 			
 			<div id="summary">		
@@ -171,14 +171,14 @@
 				<div id="pieChart"></div>				
 				
 				<div id="balanceSummary">
-					<div id="totals">
-						<div class="total">
+					<div id="total">
+						<div id="labels">
 							<div>Suma przychodów:</div>
-							<div>500000000</div>
-						</div>
-						<div class="total">
 							<div>Suma wydatków:</div>
-							<div>500000000</div>						
+						</div>
+						<div id="amounts">
+							<div>9 999 999 999zl</div>
+							<div>9 999 999 999zl</div>						
 						</div>
 					</div>	
 					<div id="balance">
